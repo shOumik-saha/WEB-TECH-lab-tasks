@@ -7,92 +7,75 @@
 			color: red;
 		}
 	</style>
+
+    <meta charset="UTF-8">
 </head>
 
 <body>
 <?php include './resources/header.php';
-    include './resources/footer.php'; ?>
-<?php    
-    $nameErr = $passwordErr = "" ;
-    $password = $name = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") 
-	{
-        if (empty($_POST["name"]))
-        {
-          $nameErr = "Name is required";
-        } 
-        else 
-		{
-            $name = test_input($_POST["name"]);
-            if (!preg_match("/^[a-zA-Z-.' ]*$/",$name)) 
-			{
-              $nameErr = "Only letters white space, period & dash allowed";
-              $name ="";
-            }
-            else if (strlen($name)<2) 
-			{
-              $nameErr = "At least two words needed";
-              $name ="";
-            }
-            
-        }
-
-          if (empty($_POST["password"])) 
-		  {
-            $passwordErr = "password is required";
-          } 
-		  else 
-		    {
-            $password = test_input($_POST["password"]);
-            if (strlen($password)<8)
-              {
-              $passwordErr = "must not be less than eight (8) characters";
-              $password ="";
-              }
-            else if (!preg_match("/[@,#,$,%]/",$password)) 
-			  {
-              $passErr = "Password must contain at least one of the special characters (@, #, $,%)";
-              $password ="";
-              }
-            }
-
-    }
-    function test_input($data) 
-	  {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
+    include './resources/footer.php';
     ?>
+    <?php 
+$userNameErr = $passErr = "";
+$username = $password = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["username"])) {
+    $userNameErr = "UserName is required";
+  } else {
+    $username = test_input($_POST["username"]);
+    if (!preg_match("/^[a-zA-Z-._]*$/",$username)) {
+      $userNameErr = "Only alpha numeric characters, period, dash or underscore allowed";
+      $username ="";
+    }
+    else if (strlen($username)<2) {
+      $userNameErr = "At least two charecters needed";
+      $username ="";
+    }
+  }
+  
+  if (empty($_POST["Password"])) {
+    $passErr = "Password is required";
+  } else {
+    $password = test_input($_POST["Password"]);
+    if (strlen($password)<8) {
+      $passErr = "Password must be 8 charecters";
+      $password ="";
+    }
+    else if (!preg_match("/[@,#,$,%]/",$password)) {
+      $passErr = "Password must contain at least one of the special characters (@, #, $,%)";
+      $password ="";
+    }
+  }
+  
+}
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
     <br><br><br>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="login">
-
+    <div class="log">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <fieldset>
-                <legend>Login</legend>
-                <div class="username">
-                    <div class="name">
+                <legend><B>LOGIN</B></legend>
+                User Name: <input type="text" name="username">
+                <span class="error">* <?php echo $userNameErr;?></span>
+                <br><br>
+                Password: <input type="Password" name="Password">
+                <span class="error">* <?php echo $passErr;?></span>
+                <br><br>
+                <a href="./homepage.php"><input type="submit" name="submit" value="Submit"></a>
 
-                        User Name: <input type="text" name="name" value="<?php echo $name;?>">
-                        <span class="error">* <?php echo $nameErr;?></span>
-                        <br><br>
-
-                    </div>
-                    <div class="password">
-
-                        Password: <input type="text" name="password" value="<?php echo $password;?>">
-                        <span class="error">* <?php echo $passwordErr;?></span>
-                        <br>
-                    </div>
-                    <br>
-                    <a href="./dashboard.php"><button>submit</button></a>
-
-                    <a href="./forgotpassword.php">Forgot Password?</a>
-
-                </div>
+                <a href="./forgotpassword.php">Forgot Password?</a>
             </fieldset>
-    </form>
+
+        </form>
+
+    </div>
+
+
 </body>
 
 </html>

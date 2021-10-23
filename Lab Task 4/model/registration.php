@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -119,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
  	if(file_exists('registration.json'))
  		{
- 			$current_data = file_get_contents('Registration.json');  
+ 			$current_data = file_get_contents('registration.json');  
             $array_data = json_decode($current_data, true);  
             $extra = array
             (  
@@ -195,7 +198,7 @@ function test_input($data) {
                 </fieldset>
                 <hr>
                 <input type="submit" name="submit" value="Submit"> <input type="reset" value="Reset">
-                
+                <a href="./homepage.php">Home page</a>
             </fieldset>
         </form>
     </div>

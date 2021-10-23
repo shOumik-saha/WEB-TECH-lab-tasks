@@ -43,7 +43,7 @@
 
                     <?php
                     //using list in html is not perfect. it wont work. so using php is best. and active.
-                    echo "<a href='index.php'>Dashboard</a> <br> <br> 
+                    echo "<a href='home.php'>Dashboard</a> <br> <br> 
                         <a href='viewprofile.php'>>View Profile</a> <br><br>
                         <a href='Editprofile.php'>>Edit Profile</a> <br><br>
                         <a href='profilepicture.php'>>Change profile picture</a> <br><br>
