@@ -1,11 +1,12 @@
-<?php 
+
+<?php
 
 require_once 'connect.php';
 
 
 function showAllPrisoners(){
 	$conn = db_conn();
-    $selectQuery = 'SELECT * FROM `user_info` ';
+    $selectQuery = 'SELECT * FROM `prisoners` ';
     try{
         $stmt = $conn->query($selectQuery);
     }catch(PDOException $e){
@@ -17,7 +18,7 @@ function showAllPrisoners(){
 
 function showPrisoner($id){
 	$conn = db_conn();
-	$selectQuery = "SELECT * FROM `user_info` where ID = ?";
+	$selectQuery = "SELECT * FROM `prisoners` where id = ?";
 
     try {
         $stmt = $conn->prepare($selectQuery);
@@ -30,11 +31,11 @@ function showPrisoner($id){
     return $row;
 }
 
-function searchPrisoner($user_name){
+function searchPrisoner($prisoner_name){
     $conn = db_conn();
-    $selectQuery = "SELECT * FROM `user_info` WHERE Username LIKE '%$user_name%'";
+    $selectQuery = "SELECT * FROM `prisoners` WHERE NAME LIKE '%$prisoner_name%'";
 
-    
+
     try{
         $stmt = $conn->query($selectQuery);
     }catch(PDOException $e){
@@ -47,21 +48,19 @@ function searchPrisoner($user_name){
 
 function addPrisoner($data){
 	$conn = db_conn();
-    $selectQuery = "INSERT into user_info (Name, Surname, Username, Password, image)
-VALUES (:name, :surname, :username, :password, :image)";
+    $selectQuery = "INSERT into prisoners (Name, Address, Nationality)
+VALUES (:name, :address, :nationality)";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([
-        	':id' => $data['id'],
-        	':Name' => $data['Name'],
-        	':Address' => $data['Address'],
-        	':Nationality' => $data['Nationality'],
-        	':image' => $data['image']
-        ]);
+        	':name' => $data['name'],
+        	':address' => $data['address'],
+        	':nationality' => $data['nationality']
+          ]);
     }catch(PDOException $e){
         echo $e->getMessage();
     }
-    
+
     $conn = null;
     return true;
 }
@@ -69,23 +68,23 @@ VALUES (:name, :surname, :username, :password, :image)";
 
 function updatePrisoner($id, $data){
     $conn = db_conn();
-    $selectQuery = "UPDATE user_info set Name = ?, Surname = ?, Username = ? where ID = ?";
+    $selectQuery = "UPDATE products set Name = ?, Address = ?, Nationality = ? where id = ?";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([
-        	$data['name'], $data['surname'], $data['username'], $id
+        	$data['name'], $data['address'], $data['nationality'], $id
         ]);
     }catch(PDOException $e){
         echo $e->getMessage();
     }
-    
+
     $conn = null;
     return true;
 }
 
 function deletePrisoner($id){
 	$conn = db_conn();
-    $selectQuery = "DELETE FROM `user_info` WHERE `ID` = ?";
+    $selectQuery = "DELETE FROM `prisoners` WHERE `id` = ?";
     try{
         $stmt = $conn->prepare($selectQuery);
         $stmt->execute([$id]);

@@ -1,12 +1,10 @@
 <?php  
-require_once 'controller/prisonersInfo.php';
+require_once '../controller/prisonerInfoController.php';
 
-$student = fetchStudent($_GET['id']);
+$student = fetchPrisoner($_GET['id']);
 
 
     include "starter.php";
-
-
 
 ?>
 <!DOCTYPE html>
@@ -24,9 +22,9 @@ $student = fetchStudent($_GET['id']);
 		<th>Image</th>
 	</tr>
 	<tr>
-		<td><a href="showStudent.php?id=<?php echo $prisoner['id'] ?>"><?php echo $prisoner['Name'] ?></a></td>
-		<td><?php echo $prisoner['Address'] ?></td>
-		<td><?php echo $prisoner['Nationality'] ?></td>
+		<td><a href="showPrisoner.php?id=<?php echo $prisoners['id'] ?>"><?php echo $prisoners['Name'] ?></a></td>
+		<td><?php echo $prisoners['Address'] ?></td>
+		<td><?php echo $prisoners['Nationality'] ?></td>
 		<td><img width="100px" src="uploads/<?php echo $prisoner['image'] ?>" alt="<?php echo $prisoner['Name'] ?>"></td>
 	</tr>
 
