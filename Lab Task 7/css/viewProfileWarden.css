@@ -1,0 +1,45 @@
+
+img {
+    border-radius: 50%;
+    height: 300px;
+    width: 240px;
+    padding: 45px;
+  
+  }
+  .profile
+  {
+    background-color: red;
+  }
+  
+  .profile
+  {
+    width: 420px;               /* sizing the input window*/
+    height:1200px;
+    background-color: rgba(0, 0, 0, 0.8);           /*making the background black*/
+    color: #fff;                   /* front color white */
+    top:100%;
+    left: 50%;                    /*moving the window center*/
+    position: absolute;
+    transform: translate(-50%,-50%);           /*moving center*/
+    box-sizing: border-box;
+    padding: 20px 30px;         /*where the writting will start from up and left of the window*/
+    border-radius: 20px;
+  
+  
+  }
+  div p {
+    padding-left: 70px
+  }
+  
+  button{
+  
+    width:100%;
+    background-color: red;
+    border-radius: 20px;
+  
+  }
+  
+  .container
+  {
+    padding-left: 90px;
+  }
