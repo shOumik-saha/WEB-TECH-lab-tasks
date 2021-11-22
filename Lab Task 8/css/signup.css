@@ -1,0 +1,113 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url(prisoner.png);
+  
+    background-size: cover;
+    /* background-position: center; */
+    font-family: sans-serif;
+  
+  }
+  
+  .loginbox
+  {
+    width: 420px;               /* sizing the input window*/
+    height: 770px;
+    background-color: rgba(92, 92, 128, 0.619);
+    color: #fff;                   /* front color white */
+    top:80%;
+    left: 50%;                    /*moving the window center*/
+    position: absolute;
+    transform: translate(-50%,-50%);           /*moving center*/
+    box-sizing: border-box;
+    padding: 20px 30px;         /*where the writting will start from up and left of the window*/
+    border-radius: 20px;
+  
+  
+  }
+  .loginbox p{
+    margin: 0;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .loginbox input{
+    width: 100%;
+    margin-bottom: 0px;
+       /*distance between two input*/
+  }
+  .loginbox input[type="text"], input[type="password"], input[type="date"]
+  {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  .loginbox input[type="submit"]
+  {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-top: 5%;
+  
+  }
+  
+  .loginbox a{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+  }
+  .loginbox a:hover
+  {
+    color: #ffc107;
+  }
+  
+   h2{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .loginbox input[type="checkbox"]
+  {
+           width: 15px;
+           height: 20px;
+           padding: 0;
+           margin: 0;
+           vertical-align: bottom;
+           position: relative;
+           top: -1px;
+  }
+  
+  .loginbox label
+  {
+        bottom: 50px;
+  
+  }
+  #radio
+  {
+    white-space:nowrap;
+    margin-left: 0px;
+    margin-right: 350px;
+  
+  }
+  
+  .error
+  {
+    color: red;
+    font-size: 13px;
+    margin-left: 100px;
+    font-style: italic ;
+  
+  }
