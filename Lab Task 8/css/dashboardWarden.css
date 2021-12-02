@@ -5,7 +5,7 @@ body{
     background: url(Admin.png);
   
     background-size: cover;
-    /* background-position: center; */
+   background-position: center; 
     font-family: sans-serif;
   }
   
